@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Card from "./components/Cards";
+import ReactForm from "./components/Form";
 
 const App = () => {
   const [contador, setContador] = useState(0);
@@ -11,11 +12,9 @@ const App = () => {
 
 
   return (
-    <>
-      <div className="flex justify-center">
-        <Card />
-      </div>
-    </>
+    <div className="bg-gray-500 w-screen h-screen">
+      <ReactForm />
+    </div>
   )
 }
 

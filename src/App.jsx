@@ -12,7 +12,7 @@ const App = () => {
 
 
   return (
-    <div className="bg-gray-500 w-screen h-screen">
+    <div className="w-screen h-screen">
       <ReactForm />
     </div>
   )

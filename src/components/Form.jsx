@@ -8,10 +8,13 @@ export default function ReactForm() {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <fieldset className="flex gap-2">
-        <label>Precio: </label>
+        <label for="priceNumber">Precio: </label>
         <input
+          id="priceNumber"
           type="number"
-          placeholder="precio"
+          min={0}
+          max={4294967295n}
+          placeholder="Precio"
           {...register("price", {
             required: "Por favor ingresa un precio"
           })} />
@@ -22,18 +25,25 @@ export default function ReactForm() {
         />
       </fieldset>
       <fieldset className="flex gap-2">
-        <label>Proveedor: </label>
-        <input placeholder="proveedor" />
+        <label for="provider">Proveedor: </label>
+        <input 
+          id="provider"
+          placeholder="Proveedor"
+          {...register("provider")}
+        />
       </fieldset>
 
       <fieldset className="flex gap-2">
-        <label>Cantidades: </label>
+        <label for="quantity">Cantidades: </label>
         <input
+          id="quantity"
           type="number"
+          min={0}
           placeholder="Ingrese la cantidad"
           {...register("cantidad", {
             required: "Por favor, ingresa una cantidad"
-          })} />
+          })} 
+        />
         <ErrorMessage
           errors={errors}
           name="cantidad"
@@ -41,12 +51,12 @@ export default function ReactForm() {
         />
       </fieldset>
 
-      <button 
-        className="bg-indigo-200 rounded w-24 h-8" 
+      <button
+        className="bg-indigo-200 rounded w-24 h-8"
         type="submit"
       >
         Enviar
       </button>
     </form>
-  );
+  )
 }

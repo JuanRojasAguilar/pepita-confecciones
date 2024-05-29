@@ -1,6 +1,5 @@
 import { useState } from "react";
-import Card from "./components/Cards";
-import ReactForm from "./components/Form";
+import { Landing } from "./components/Landing";
 
 const App = () => {
   const [contador, setContador] = useState(0);
@@ -13,7 +12,7 @@ const App = () => {
 
   return (
     <div className="w-screen h-screen">
-      <ReactForm />
+      <Landing />
     </div>
   )
 }

@@ -1,17 +1,9 @@
 import { useState } from "react";
-import { Landing } from "./components/Landing";
+import { Landing } from "./pages/Landing";
 
 const App = () => {
-  const [contador, setContador] = useState(0);
-
-  const handleClick = () => {
-    setContador(contador + 1);
-    console.log(contador);
-  }
-
-
   return (
-    <div className="w-screen h-screen">
+    <div className="w-screen h-screen bg-primary-bg bg-cover">
       <Landing />
     </div>
   )

@@ -10,20 +10,19 @@ export const Landing = () => {
             justify-around
         `,
         textArea: `
-            h-40
             w-2/5
             text-white
         `,
         title: `
             leading-normal
             text-7xl
-            text-[64px]
         `,
         buttonArea: `
             w-2/5
             flex
             flex-col
             gap-4
+            items-center
         `
     }
 

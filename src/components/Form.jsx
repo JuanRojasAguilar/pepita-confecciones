@@ -1,13 +1,15 @@
-import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
-import MaterialContext from "../context/MaterialsContext";
+import { getAllMaterials } from "../hooks/useMaterialApi";
+import { useState } from "react";
 
 export default function ReactForm() {
   const { register, handleSubmit, watch, formState: { errors } } = useForm({ criteriaMode: "all" });
   const onSubmit = data => console.log(data);
-  const materialData = useContext(MaterialContext);
-  console.log(materialData);
+  const materialData = getAllMaterials();
+  const [materials, setMaterials ] = useState(materialData);
+
+  console.log(materials);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

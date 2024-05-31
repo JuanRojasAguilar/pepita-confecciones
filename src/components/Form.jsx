@@ -1,9 +1,13 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
+import MaterialContext from "../context/MaterialsContext";
 
 export default function ReactForm() {
   const { register, handleSubmit, watch, formState: { errors } } = useForm({ criteriaMode: "all" });
   const onSubmit = data => console.log(data);
+  const materialData = useContext(MaterialContext);
+  console.log(materialData);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

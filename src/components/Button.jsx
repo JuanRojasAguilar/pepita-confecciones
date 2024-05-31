@@ -1,9 +1,9 @@
 export const Button = ({ page }) => {
   console.log(page)
   return (
-    <a href={page.url}>
+    <a className="flex justify-center hover:translate-x-10 w-3/5 transition-all" href={page.url}>
       <button
-        className="text-white font-semibold rounded bg-cyan w-80 h-16 text-3xl"
+        className="text-white font-semibold rounded-md bg-cyan w-full h-12 landscape:sm:h-15 landscape:lg:h-20  portrait:sm:h-20 truncate text-[25px] md:text-[35px]"
       >
         {page.title}
       </button>

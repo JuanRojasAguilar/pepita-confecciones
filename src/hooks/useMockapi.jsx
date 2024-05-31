@@ -1,8 +1,8 @@
-const useMockapi = (endpoint) => {
-  const url = import.meta.env.MOCKAPI_URL + `/${endpoint}s`;
+const useMockapi = () => {
+  const url = import.meta.env.MOCKAPI_URL;
 
-  const postToApi = (obj) => {
-    void fetch(url, {
+  const postToApi = (endpoint, obj) => {
+    void fetch(url + endpoint, {
       method: "POST",
       mode: "cors",
       body: JSON.stringify(obj),
@@ -10,8 +10,8 @@ const useMockapi = (endpoint) => {
     });
   };
 
-  const getAllFromApi = async () => {
-    const req = await fetch(url);
+  const getAllFromApi = async (endpoint) => {
+    const req = await fetch(url + endpoint);
     return await req.json();
   };
   return [

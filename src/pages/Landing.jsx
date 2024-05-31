@@ -53,6 +53,7 @@ export const Landing = () => {
             w-10
             sm:hidden
         `,
+
         menudesp: `
             h-0
             truncate

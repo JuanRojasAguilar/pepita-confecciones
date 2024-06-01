@@ -3,6 +3,9 @@ import { ErrorMessage } from "@hookform/error-message";
 import { getAllMaterials } from "../hooks/useMaterialApi";
 import { useState } from "react";
 
+import NavCards from "../layout/NavCards";
+
+
 export default function ReactForm() {
   const { register, handleSubmit, watch, formState: { errors } } = useForm({ criteriaMode: "all" });
   const onSubmit = data => console.log(data);
@@ -11,7 +14,8 @@ export default function ReactForm() {
 
   console.log(materials);
 
-  return (
+  return(
+    <NavCards>
     <form onSubmit={handleSubmit(onSubmit)}>
       <fieldset className="flex gap-2">
         <label for="priceNumber">Precio: </label>
@@ -64,5 +68,6 @@ export default function ReactForm() {
         Enviar
       </button>
     </form>
+    </NavCards>
   )
 }

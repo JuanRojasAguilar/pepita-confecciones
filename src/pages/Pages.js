@@ -1,11 +1,11 @@
 const Pages = [
   {
-    title: "Materias Primas",
+    title: "Pedir Materiales",
     url: "/materias-primas"
   },
   {
-    title: "Materias",
-    url: "/materias"
+    title: "Ver Materiales",
+    url: "/card-display"
   }
 ]
 

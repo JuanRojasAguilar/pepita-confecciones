@@ -1,6 +1,6 @@
 export const data = [
   {
-    MateriaPrima: {
+    materiaPrima: {
       idMateriaPrima: {
         info1: "toda la informacion1",
         info2: "toda la informacion2",

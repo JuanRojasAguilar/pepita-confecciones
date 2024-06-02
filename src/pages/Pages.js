@@ -1,6 +1,6 @@
 const Pages = [
   {
-    title: "Pedir Materiales",
+    title: "Materias primas",
     url: "/materias-primas"
   },
   {

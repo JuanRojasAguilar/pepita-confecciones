@@ -41,19 +41,13 @@ export const Landing = () => {
             hover:-translate-y-5
             transition-all
         `,
-    buttongetstarted: `
-            w-1/3
-            bg-cyan
-            rounded-lg
-            h-12
-            sm:hidden
-        `,
     buttonArea: `
             w-3/5
             flex-col
             items-center
             gap-4
-            flex
+            sm:flex
+            hidden
         `,
   };
 

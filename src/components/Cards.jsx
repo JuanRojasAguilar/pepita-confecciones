@@ -5,7 +5,7 @@ const Card = () => {
       flex-col
       justify-center
       items-center
-      w-4/5
+      w-11/12
       aspect-[30/31]
       rounded-2xl
       flip-card
@@ -38,25 +38,42 @@ const Card = () => {
     `,
     title: `
       text-3xl 
+      sm:text-5xl
+      landscape:2xl:text-7xl
       text-red-500
       font-bold
     `,
     downCard: `
       w-[80%] 
       text-sm
+      sm:text-lg
+      landscape:2xl:text-xl
       text-center
     `,
     buttons: `
       flex
       justify-around 
+      w-full
+      ps-4
+      pe-4
     `,
     button: `
       mt-2
-      bg-red-200 
+      bg-gray-900 
       rounded-md
+      sm:rounded-xl
       w-20
+      sm:w-28
+      landscape:2xl:w-40
       h-8
+      sm:h-12
+      landscape:2xl:h-16
       self-center
+      text-white 
+      sm:text-xl
+      landscape:2xl:text-3xl
+      shadow-md 
+      shadow-stone-900
     `
   }
   
@@ -68,15 +85,17 @@ const Card = () => {
           <img src="" alt="Image" />
           <div className={Styles.downCard}>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic, voluptas ab.</p>
-            <div className={Styles.buttons}>
-              <button className={Styles.button}>edit</button>
-              <button className={Styles.button}>delete</button>
-            </div>
           </div>
         </div>
         <div className={Styles.cardBack}>
           <h1 className={Styles.title}>Reverso</h1>
-          <p>Este es el contenido del reverso de la carta.</p>
+          <div className={Styles.downCard}>
+            <p>Este es el contenido del reverso de la carta.</p>
+          </div>
+          <div className={Styles.buttons}>
+              <button className={Styles.button}>edit</button>
+              <button className={Styles.button}>delete</button>
+          </div>
         </div>
       </div>
     </div>

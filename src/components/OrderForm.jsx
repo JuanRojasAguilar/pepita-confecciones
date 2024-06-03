@@ -23,6 +23,8 @@ const OrderForm = ({ onFormSubmit }) => {
 
   const Styles = {
     form: `
+      flex
+      flex-col
       absolute 
       top-1/2 
       left-1/2 
@@ -33,8 +35,13 @@ const OrderForm = ({ onFormSubmit }) => {
       rounded
       p-4
       box-border
-      sm:w-1/3
+      sm:w-4/5
+      lg:w-1/3
+      landscape:lg:w-3/5
+      landscape:2xl:w-1/3
       z-10
+      shadow-xl
+      shadow-gray-700
     `,
     fieldset: `
       flex
@@ -45,35 +52,44 @@ const OrderForm = ({ onFormSubmit }) => {
       flex
       justify-between
       w-full
+      sm:h-8
     `,
     label: `
       me-2
+      sm:text-xl
     `,
     input: `
       flex-grow
       flex-shrink
       text-end
+      sm:text-xl
     `,
     inputNaN: `
       flex-grow
       flex-shrink
       text-end
+      sm:text-xl
+      landscape:sm:pe-4
     `,
     errorMessage: `
       text-red-700 
       text-xs 
       font-bold
+      sm:text-sm
     `,
     button: `
-      bg-indigo-200 
+      bg-indigo-400 
       rounded 
       w-24 
       h-8 
+      sm:h-12
       self-center
       mt-2
-      w-full
-    `,
-  };
+      self-center
+      sm:w-1/3
+      sm:text-2xl
+    `
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} ref={form} className={Styles.form}>

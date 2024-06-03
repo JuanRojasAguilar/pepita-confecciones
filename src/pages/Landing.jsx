@@ -24,6 +24,7 @@ export const Landing = () => {
             portrait:sm:portrait:text-9xl
             landscape:md:text-7xl
             landscape:md:portrait:text-9xl
+            landscape:2xl:text-9xl
             landscape:mb-0
             landscape:ms-5
             landscape:text-left
@@ -35,8 +36,10 @@ export const Landing = () => {
     cosedora: `
             absolute
             w-20
+            landscape:2xl:w-48
             right-5
             top-10
+            landscape:2xl:top-32
             landscape:md:w-40
             hover:-translate-y-5
             transition-all

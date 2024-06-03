@@ -11,8 +11,13 @@ const CardDisplay = () => {
       h-full
       w-full
       overflow-auto
-      pt-16
-      gap-2
+      pt-12
+      sm:pt-16
+      landscape:2xl:pt-28
+      gap-y-8
+      sm:grid-cols-2
+      lg:grid-cols-3
+      landscape:2xl:grid-cols-4
     `
   }
 

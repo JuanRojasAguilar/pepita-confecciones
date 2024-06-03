@@ -1,10 +1,10 @@
-import ReactForm from "../components/Form";
+import OrderForm from "../components/OrderForm";
 import NavSimple from "../layout/NavSimple";
 
 const OrderPlacement = () => {
   return (
     <NavSimple>
-      <ReactForm />
+      <OrderForm />
     </NavSimple>
   ) 
 }

@@ -1,5 +1,5 @@
 import { useState ,useRef } from "react";
-import ReactForm from '../components/Form.jsx';
+import OrderForm from "../components/OrderForm";
 
 const NavCards = ({ children }) => {
   const [showForm, setShowForm] = useState(false);
@@ -60,7 +60,7 @@ const NavCards = ({ children }) => {
         </div>      
       </nav>
       {children}
-      {showForm && <ReactForm onFormSubmit={hiddenForm}/>}
+      {showForm && <OrderForm onFormSubmit={hiddenForm}/>}
     </div>
   );
 };

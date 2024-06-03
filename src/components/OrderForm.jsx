@@ -1,22 +1,25 @@
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import { getAllMaterials } from "../hooks/useMaterialApi";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
-
-
-export default function ReactForm({ onFormSubmit }) {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm({ criteriaMode: "all" });
-  const form = useRef(null)
-  const onSubmit = data => {
+const OrderForm = ({ onFormSubmit }) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ criteriaMode: "all" });
+  const form = useRef(null);
+  const onSubmit = (data) => {
     console.log(data);
     onFormSubmit();
-    form.current.reset()
-  }
-  const materialData = getAllMaterials();
-  const [materials, setMaterials ] = useState(materialData);
-
-  console.log(materials);
+    form.current.reset();
+  };
+  const [materials, setMaterials] = useState([]);
+  useEffect(() => {
+    const materialData = getAllMaterials();
+    setMaterials(materialData);
+  }, []);
 
   const Styles = {
     form: `
@@ -33,7 +36,7 @@ export default function ReactForm({ onFormSubmit }) {
       sm:w-1/3
       z-10
     `,
-    fieldset:`
+    fieldset: `
       flex
       mb-2
       flex-wrap
@@ -69,37 +72,45 @@ export default function ReactForm({ onFormSubmit }) {
       self-center
       mt-2
       w-full
-    `
-  }
+    `,
+  };
 
-  return(
+  return (
     <form onSubmit={handleSubmit(onSubmit)} ref={form} className={Styles.form}>
       <fieldset className={Styles.fieldset}>
         <div className={Styles.fieldsetDiv}>
-          <label for="priceNumber" className={Styles.label}>Precio: </label>
+          <label for="priceNumber" className={Styles.label}>
+            Precio:{" "}
+          </label>
           <input
-            className= {Styles.input}
+            className={Styles.input}
             id="priceNumber"
             type="number"
             min={0}
             max={4294967295n}
             placeholder="Precio"
             {...register("price", {
-              required: "Por favor ingresa un precio"
-            })} />
+              required: "Por favor ingresa un precio",
+            })}
+          />
         </div>
         <ErrorMessage
           errors={errors}
           name="price"
-          render={({ message }) => <p className={Styles.errorMessage}>{message}</p>}
+          render={({ message }) => (
+            <p className={Styles.errorMessage}>{message}</p>
+          )}
         />
-      </fieldset >
+      </fieldset>
 
       <fieldset className={Styles.fieldset}>
         <div className={Styles.fieldsetDiv}>
-          <label for="provider" className={Styles.label}>Proveedor: </label>
-          <input 
-            className= {Styles.inputNaN}
+          <label for="provider" className={Styles.label}>
+            Proveedor:{" "}
+          </label>
+          <select></select>
+          <input
+            className={Styles.inputNaN}
             id="provider"
             placeholder="Proveedor"
             {...register("provider")}
@@ -109,31 +120,34 @@ export default function ReactForm({ onFormSubmit }) {
 
       <fieldset className={Styles.fieldset}>
         <div className={Styles.fieldsetDiv}>
-          <label for="quantity" className={Styles.label}>Cantidades: </label>
+          <label for="quantity" className={Styles.label}>
+            Cantidades:{" "}
+          </label>
           <input
-            className= {Styles.input}
+            className={Styles.input}
             id="quantity"
             type="number"
             min={0}
             placeholder="Ingrese la cantidad"
             {...register("cantidad", {
-              required: "Por favor, ingresa una cantidad"
-            })} 
+              required: "Por favor, ingresa una cantidad",
+            })}
           />
         </div>
         <ErrorMessage
           errors={errors}
           name="cantidad"
-          render={({ message }) => <p className={Styles.errorMessage}>{message}</p>}
+          render={({ message }) => (
+            <p className={Styles.errorMessage}>{message}</p>
+          )}
         />
       </fieldset>
 
-      <button
-        className={Styles.button}
-        type="submit"
-      >
+      <button className={Styles.button} type="submit">
         Enviar
       </button>
     </form>
-  )
-}
+  );
+};
+
+export default OrderForm;

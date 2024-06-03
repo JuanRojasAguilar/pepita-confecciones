@@ -13,7 +13,9 @@ const getAllMaterials = async () => {
     method: "GET",
     headers: { 'content-type': 'application/json' }
   })
+  console.log(req)
   const res = await req.json()
+  console.log(res)
 
   return res;
 };

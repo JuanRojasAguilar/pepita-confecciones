@@ -14,11 +14,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/materias-primas",
-    element: <ReactForm />
+    element: <CardDisplay />
   },
   {
     path: "/card-display",
-    element: <CardDisplay />
+    element: <ReactForm />
   }
 ])
 

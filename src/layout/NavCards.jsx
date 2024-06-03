@@ -21,10 +21,14 @@ const NavCards = ({ children }) => {
       flex
       justify-between
       items-center
-      text-sm
-      h-10
+      h-18
       w-screen
       fixed
+      z-10
+      text-white
+      text-3xl
+      pl-4
+      pt-2
     `,
     rigthNav: `
       flex
@@ -34,13 +38,13 @@ const NavCards = ({ children }) => {
       bg-cyan
       rounded
       me-2
-      w-24
+      w-32
     `, 
     inputStyle: `
       text-center
       rounded
       me-5
-      w-24
+      w-28
     `
   }
 
@@ -51,8 +55,8 @@ const NavCards = ({ children }) => {
           <a href="/">&#8592; Anterior</a>
         </div>
         <div className={Styles.rigthNav}>
-          <button className={Styles.buttonStyles} onClick={putForm}>agregar</button>
-          <input type="text" placeholder="buscar" className={Styles.inputStyle} />
+          <button className={Styles.buttonStyles} onClick={putForm}>Agregar</button>
+          <input type="text" placeholder="Buscar" className={Styles.inputStyle} />
         </div>      
       </nav>
       {children}

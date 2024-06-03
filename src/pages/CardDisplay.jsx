@@ -11,7 +11,7 @@ const CardDisplay = () => {
       h-full
       w-full
       overflow-auto
-      pt-12
+      pt-16
       gap-2
     `
   }

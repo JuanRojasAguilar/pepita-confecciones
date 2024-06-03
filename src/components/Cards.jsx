@@ -9,6 +9,7 @@ const Card = () => {
       aspect-[30/31]
       rounded-2xl
       flip-card
+      gap-[50px]
     `,
     cardInner: `
       w-full

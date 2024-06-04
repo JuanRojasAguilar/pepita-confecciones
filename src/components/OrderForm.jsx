@@ -17,9 +17,11 @@ const OrderForm = ({ onFormSubmit }) => {
   };
   const [materials, setMaterials] = useState([]);
   useEffect(() => {
-    const materialData = getAllMaterials();
-    setMaterials(materialData);
+    getAllMaterials().then((materialData) => {
+      setMaterials(materialData);
+    });
   }, []);
+  console.log(materials);
 
   const Styles = {
     form: `
@@ -88,11 +90,15 @@ const OrderForm = ({ onFormSubmit }) => {
       self-center
       sm:w-1/3
       sm:text-2xl
-    `
-  }
+    `,
+  };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} ref={form} className={Styles.form}>
+    <form
+      onSubmit={() => handleSubmit(onSubmit)}
+      ref={form}
+      className={Styles.form}
+    >
       <fieldset className={Styles.fieldset}>
         <div className={Styles.fieldsetDiv}>
           <label for="priceNumber" className={Styles.label}>
@@ -124,13 +130,11 @@ const OrderForm = ({ onFormSubmit }) => {
           <label for="provider" className={Styles.label}>
             Proveedor:{" "}
           </label>
-          <select></select>
-          <input
-            className={Styles.inputNaN}
-            id="provider"
-            placeholder="Proveedor"
-            {...register("provider")}
-          />
+          <select name="materials" id="materials">
+            {materials.map((material) => {
+              return <option value={material.name}>{material.name}</option>;
+            })}
+          </select>
         </div>
       </fieldset>
 

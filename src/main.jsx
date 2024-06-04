@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import './index.css'
 
 import ReactForm from './components/Form.jsx';
+import CardDisplay from "./pages/CardDisplay.jsx";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
   {
     path: "/materias-primas",
     element: <ReactForm />
+  },
+  {
+    path: "/card-display",
+    element: <CardDisplay />
   }
 ])
 

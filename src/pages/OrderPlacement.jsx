@@ -1,12 +1,13 @@
-import MaterialOrderForm from "../components/MaterialOrderForm";
 import NavSimple from "../layout/NavSimple";
 import { MaterialsProvider } from "../context/MaterialsContext";
+
+import OrderPlacementForm from "../components/OrderPlacementForm";
 
 const OrderPlacement = () => {
   return (
     <MaterialsProvider>
       <NavSimple>
-        <MaterialOrderForm />
+        <OrderPlacementForm />
       </NavSimple>
     </MaterialsProvider>
   );

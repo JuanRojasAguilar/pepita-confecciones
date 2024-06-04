@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import { useRef, useContext } from "react";
 import { MaterialsContext } from "../context/MaterialsContext";
-import { postMaterial } from "../hooks/useMaterialApi";
+import { postOrder } from "../hooks/useOrders";
 
 const MaterialOrderForm = () => {
   const {
@@ -14,12 +14,11 @@ const MaterialOrderForm = () => {
   const onSubmit = (data) => {
     console.log(data);
     const order = {
-      name: data.name,
+      items: [data.name],
       quantity: data.cantidad,
-      price: data.price,
-      proveedor: data.proveeodr,
+      price: data.price * data.cantidad,
     };
-    postMaterial(order);
+    postOrder(order);
   };
 
   const materials = useContext(MaterialsContext);
@@ -148,19 +147,19 @@ const MaterialOrderForm = () => {
 
       <fieldset className={Styles.fieldset}>
         <div className={Styles.fieldsetDiv}>
-          <label for="provider" className={Styles.label}>
-            Proveedor:{" "}
+          <label for="materials" className={Styles.label}>
+            Material:{" "}
           </label>
           <select name="materials" id="materials" className={Styles.input}>
             {materials &&
               materials.map((material) => {
                 return (
                   <option 
-                    value={material.proveedor} 
+                    value={material.name} 
                     key={material.id}
-                    {...register("proveedor")}
+                    {...register("material")}
                   >
-                    {material.proveedor}
+                    {material.name}
                   </option>
                 );
               })}

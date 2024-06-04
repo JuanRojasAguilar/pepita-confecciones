@@ -1,7 +1,9 @@
 import NavCards from "../layout/NavCards";
 import Card from "../components/Cards";
+import { getAllMaterials } from "../hooks/useMaterialApi";
 
 const CardDisplay = () => {
+  const { _, materials } = getAllMaterials();
   const Styles = {
     cardGrid: `
       grid
@@ -18,25 +20,18 @@ const CardDisplay = () => {
       sm:grid-cols-2
       lg:grid-cols-3
       landscape:2xl:grid-cols-4
-    `
-  }
+    `,
+  };
 
   return (
-    <NavCards>
-      <div id="cardContainer" className={Styles.cardGrid}>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-      </div>
-    </NavCards>
-  )
-}
+      <NavCards>
+        <div id="cardContainer" className={Styles.cardGrid}>
+        {materials && materials.map(material => {
+          return <Card  key={material.id} material={material}/>
+        })}
+        </div>
+      </NavCards>
+  );
+};
 
 export default CardDisplay;
-

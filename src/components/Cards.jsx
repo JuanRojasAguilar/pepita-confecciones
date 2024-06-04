@@ -1,4 +1,5 @@
-const Card = () => {
+const Card = ({material}) => {
+  console.log(material)
   const Styles = {
     cardContainer: `
       flex
@@ -81,16 +82,16 @@ const Card = () => {
     <div className={Styles.cardContainer}>
       <div className={Styles.cardInner}>
         <div className={Styles.cardFront}>
-          <h1 className={Styles.title}>Carta</h1>
-          <img src="" alt="Image" />
+          <h1 className={Styles.title}>{material.name}</h1>
+          <img src={material.image} alt="Image" />
           <div className={Styles.downCard}>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic, voluptas ab.</p>
+            <p>{material.quantity} - {material.proveedor}</p>
           </div>
         </div>
         <div className={Styles.cardBack}>
-          <h1 className={Styles.title}>Reverso</h1>
+          <h1 className={Styles.title}>{material.name}</h1>
           <div className={Styles.downCard}>
-            <p>Este es el contenido del reverso de la carta.</p>
+            <p>${material.price} x {material.quantity}</p>
           </div>
           <div className={Styles.buttons}>
               <button className={Styles.button}>edit</button>

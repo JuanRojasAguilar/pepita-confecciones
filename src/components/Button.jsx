@@ -1,5 +1,4 @@
 export const Button = ({ page }) => {
-  console.log(page)
   return (
     <a className="flex justify-center hover:translate-x-10 w-3/5 transition-all" href={page.url}>
       <button

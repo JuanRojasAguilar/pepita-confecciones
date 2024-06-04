@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 const url = import.meta.env.VITE_MOCKAPI_URL + "/materials";
 const postMaterial = (obj) => {
   void fetch(url, {
@@ -8,19 +10,29 @@ const postMaterial = (obj) => {
   });
 };
 
-const getAllMaterials = async () => {
-  const response = await fetch(url, {
-    method: "GET",
-    headers: { 'content-type': 'application/json' }
-  })
+const getAllMaterials = () => {
+  const [loading, setLoading] = useState(true);
+  const [materials, setMaterials] = useState([]);
 
-  if (!response.ok) {
-    throw new Error("The API response wasn't ok");
-  }
+  useEffect(() => {
+    (async () => {
+      setLoading(true);
+      try {
+        const laura = await fetch(url, {
+          method: "GET",
+          headers: { "content-type": "application/json" },
+        });
+        const mafe = await laura.json();
+        setMaterials(mafe);
+      } catch (e) {
+        console.error(e.message);
+      } finally {
+        setLoading(false);
+      }
+    })();
+  }, []);
 
-  const data = await response.json()
-  return data;
+  return { loading, materials };
 };
 
 export { postMaterial, getAllMaterials };
-

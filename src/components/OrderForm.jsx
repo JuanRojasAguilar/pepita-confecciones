@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
-import { getAllMaterials } from "../hooks/useMaterialApi";
-import { useState, useRef, useEffect } from "react";
+import { useRef, useContext } from "react";
+import { MaterialsContext } from "../context/MaterialsContext";
 
 const OrderForm = ({ onFormSubmit }) => {
   const {
@@ -15,13 +15,8 @@ const OrderForm = ({ onFormSubmit }) => {
     onFormSubmit();
     form.current.reset();
   };
-  const [materials, setMaterials] = useState([]);
-  useEffect(() => {
-    getAllMaterials().then((materialData) => {
-      setMaterials(materialData);
-    });
-  }, []);
-  console.log(materials);
+
+  const materials = useContext(MaterialsContext);
 
   const Styles = {
     form: `
@@ -130,9 +125,13 @@ const OrderForm = ({ onFormSubmit }) => {
           <label for="provider" className={Styles.label}>
             Proveedor:{" "}
           </label>
-          <select name="materials" id="materials">
-            {materials.map((material) => {
-              return <option value={material.name}>{material.name}</option>;
+          <select name="materials" id="materials" className={Styles.input}>
+            {materials && materials.map((material) => {
+              return (
+                <option value={material.proveedor} key={material.id}>
+                  {material.proveedor}
+                </option>
+              );
             })}
           </select>
         </div>

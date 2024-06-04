@@ -1,4 +1,4 @@
-const Card = () => {
+const Card = ({ material }) => {
   const Styles = {
     cardContainer: `
       flex
@@ -74,17 +74,19 @@ const Card = () => {
       landscape:2xl:text-3xl
       shadow-md 
       shadow-stone-900
-    `
-  }
-  
+    `,
+  };
+
   return (
     <div className={Styles.cardContainer}>
       <div className={Styles.cardInner}>
         <div className={Styles.cardFront}>
-          <h1 className={Styles.title}>Carta</h1>
-          <img src="" alt="Image" />
+          <h1 className={Styles.title}>{material.Nombre}</h1>
+          <div className="categoria">
+            Categoria: <span>{material.categoria}</span>
+          </div>
           <div className={Styles.downCard}>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic, voluptas ab.</p>
+            <p>{material.description}</p>
           </div>
         </div>
         <div className={Styles.cardBack}>
@@ -93,13 +95,13 @@ const Card = () => {
             <p>Este es el contenido del reverso de la carta.</p>
           </div>
           <div className={Styles.buttons}>
-              <button className={Styles.button}>edit</button>
-              <button className={Styles.button}>delete</button>
+            <button className={Styles.button}>edit</button>
+            <button className={Styles.button}>delete</button>
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Card;

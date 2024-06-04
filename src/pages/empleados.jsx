@@ -1,7 +1,7 @@
 import NavCards from "../layout/NavCards";
 import Card from "../components/Cards";
 
-const CardDisplay = () => {
+const Empleados = () => {
   const Styles = {
     cardGrid: `
       grid
@@ -18,12 +18,12 @@ const CardDisplay = () => {
       sm:grid-cols-2
       lg:grid-cols-3
       landscape:2xl:grid-cols-4
-    `
-  }
+    `,
+  };
 
   return (
     <NavCards>
-      <div id="cardContainer" className={Styles.cardGrid}>
+      <div id="Empleados" className={Styles.cardGrid}>
         <Card />
         <Card />
         <Card />
@@ -35,8 +35,7 @@ const CardDisplay = () => {
         <Card />
       </div>
     </NavCards>
-  )
-}
+  );
+};
 
-export default CardDisplay;
-
+export default Empleados;

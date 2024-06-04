@@ -1,9 +1,8 @@
 import { Button } from "../components/Button";
 import Pages from "./Pages";
 import NavLanding from "../layout/NavLanding";
-
+import { getAllMaterials, postMaterial } from "../hooks/useMaterialApi";
 export const Landing = () => {
-
   const Styles = {
     container: `
               h-full

@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
-import { getAllMaterials } from "../hooks/useMaterialApi";
+import { getAllMaterials, postMaterial } from "../hooks/useMaterialApi";
 import { useState, useRef, useEffect } from "react";
 
 const OrderForm = ({ onFormSubmit }) => {
@@ -9,17 +9,19 @@ const OrderForm = ({ onFormSubmit }) => {
     handleSubmit,
     formState: { errors },
   } = useForm({ criteriaMode: "all" });
+
   const form = useRef(null);
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = (materialData) => {
+    console.log(materialData);
+    postMaterial(materialData);
     onFormSubmit();
     form.current.reset();
   };
-  const [materials, setMaterials] = useState([]);
-  useEffect(() => {
-    const materialData = getAllMaterials();
-    setMaterials(materialData);
-  }, []);
+  // const [materials, setMaterials] = useState([]);
+  // useEffect(() => {
+  //   const materialData = getAllMaterials();
+  //   setMaterials(materialData);
+  // }, []);
 
   const Styles = {
     form: `
@@ -88,31 +90,32 @@ const OrderForm = ({ onFormSubmit }) => {
       self-center
       sm:w-1/3
       sm:text-2xl
-    `
-  }
+    `,
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} ref={form} className={Styles.form}>
+      {/*primer question*/}
       <fieldset className={Styles.fieldset}>
         <div className={Styles.fieldsetDiv}>
-          <label for="priceNumber" className={Styles.label}>
-            Precio:{" "}
+          <label for="IdMateriaPrima" className={Styles.label}>
+            IdMateriaPrima:{" "}
           </label>
           <input
             className={Styles.input}
-            id="priceNumber"
-            type="number"
-            min={0}
-            max={4294967295n}
-            placeholder="Precio"
-            {...register("price", {
-              required: "Por favor ingresa un precio",
+            id="IdMateriaPrima"
+            type="text"
+            // min={0}
+            // max={4294967295n}
+            placeholder="Id"
+            {...register("id", {
+              required: "Por favor ingresa el id",
             })}
           />
         </div>
         <ErrorMessage
           errors={errors}
-          name="price"
+          name="IdMaterials"
           render={({ message }) => (
             <p className={Styles.errorMessage}>{message}</p>
           )}
@@ -121,38 +124,170 @@ const OrderForm = ({ onFormSubmit }) => {
 
       <fieldset className={Styles.fieldset}>
         <div className={Styles.fieldsetDiv}>
-          <label for="provider" className={Styles.label}>
-            Proveedor:{" "}
+          <label for="Nombre" className={Styles.label}>
+            Nombre:{" "}
           </label>
-          <select></select>
           <input
-            className={Styles.inputNaN}
-            id="provider"
+            className={Styles.input}
+            id="Nombre"
+            type="text"
+            // min={0}
+            // max={4294967295n}
+            placeholder="Nombre"
+            {...register("Nombre", {
+              required: "Por favor ingresa el nombre",
+            })}
+          />
+        </div>
+        <ErrorMessage
+          errors={errors}
+          name="NombreMaterials"
+          render={({ message }) => (
+            <p className={Styles.errorMessage}>{message}</p>
+          )}
+        />
+      </fieldset>
+
+      <fieldset className={Styles.fieldset}>
+        <div className={Styles.fieldsetDiv}>
+          <label htmlFor="description" className={Styles.label}>
+            Descripción:
+          </label>
+          <input
+            className={Styles.input}
+            id="description"
+            type="text"
+            placeholder="Descripción"
+            {...register("description", {
+              required: "Por favor ingresa la descripción",
+            })}
+          />
+        </div>
+      </fieldset>
+      <fieldset className={Styles.fieldset}>
+        <div className={Styles.fieldsetDiv}>
+          <label htmlFor="categoria" className={Styles.label}>
+            Categoría:
+          </label>
+          <input
+            className={Styles.input}
+            id="categoria"
+            type="text"
+            placeholder="Categoría"
+            {...register("categoria", {
+              required: "Por favor ingresa la categoría",
+            })}
+          />
+        </div>
+      </fieldset>
+      <fieldset className={Styles.fieldset}>
+        <div className={Styles.fieldsetDiv}>
+          <label htmlFor="proveedor" className={Styles.label}>
+            Proveedor:
+          </label>
+          <input
+            className={Styles.input}
+            id="proveedor"
+            type="text"
             placeholder="Proveedor"
-            {...register("provider")}
+            {...register("proveedor", {
+              required: "Por favor ingresa el proveedor",
+            })}
           />
         </div>
       </fieldset>
 
       <fieldset className={Styles.fieldset}>
         <div className={Styles.fieldsetDiv}>
-          <label for="quantity" className={Styles.label}>
-            Cantidades:{" "}
+          <label htmlFor="costoPorUnidad" className={Styles.label}>
+            Costo por Unidad:
           </label>
           <input
             className={Styles.input}
-            id="quantity"
+            id="costoPorUnidad"
             type="number"
-            min={0}
-            placeholder="Ingrese la cantidad"
-            {...register("cantidad", {
-              required: "Por favor, ingresa una cantidad",
+            step="0.01"
+            placeholder="Costo por Unidad"
+            {...register("costoPorUnidad", {
+              required: "Por favor ingresa el costo por unidad",
             })}
           />
         </div>
         <ErrorMessage
           errors={errors}
-          name="cantidad"
+          name="costoPorUnidad"
+          render={({ message }) => (
+            <p className={Styles.errorMessage}>{message}</p>
+          )}
+        />
+      </fieldset>
+
+      <fieldset className={Styles.fieldset}>
+        <div className={Styles.fieldsetDiv}>
+          <label htmlFor="unidadDeMedida" className={Styles.label}>
+            Unidad de Medida:
+          </label>
+          <input
+            className={Styles.input}
+            id="unidadDeMedida"
+            type="text"
+            placeholder="Unidad de Medida"
+            {...register("unidadDeMedida", {
+              required: "Por favor ingresa la unidad de medida",
+            })}
+          />
+        </div>
+        <ErrorMessage
+          errors={errors}
+          name="unidadDeMedida"
+          render={({ message }) => (
+            <p className={Styles.errorMessage}>{message}</p>
+          )}
+        />
+      </fieldset>
+
+      <fieldset className={Styles.fieldset}>
+        <div className={Styles.fieldsetDiv}>
+          <label htmlFor="cantidadEnStock" className={Styles.label}>
+            Cantidad en Stock:
+          </label>
+          <input
+            className={Styles.input}
+            id="cantidadEnStock"
+            type="number"
+            placeholder="Cantidad en Stock"
+            {...register("cantidadEnStock", {
+              required: "Por favor ingresa la cantidad en stock",
+            })}
+          />
+        </div>
+        <ErrorMessage
+          errors={errors}
+          name="cantidadEnStock"
+          render={({ message }) => (
+            <p className={Styles.errorMessage}>{message}</p>
+          )}
+        />
+      </fieldset>
+
+      <fieldset className={Styles.fieldset}>
+        <div className={Styles.fieldsetDiv}>
+          <label htmlFor="ubicacionEnAlmacen" className={Styles.label}>
+            Ubicación en Almacén:
+          </label>
+          <input
+            className={Styles.input}
+            id="ubicacionEnAlmacen"
+            type="text"
+            placeholder="Ubicación en Almacén"
+            {...register("ubicacionEnAlmacen", {
+              required: "Por favor ingresa la ubicación en almacén",
+            })}
+          />
+        </div>
+        <ErrorMessage
+          errors={errors}
+          name="ubicacionEnAlmacen"
           render={({ message }) => (
             <p className={Styles.errorMessage}>{message}</p>
           )}

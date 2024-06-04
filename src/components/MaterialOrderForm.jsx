@@ -2,8 +2,9 @@ import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import { useRef, useContext } from "react";
 import { MaterialsContext } from "../context/MaterialsContext";
+import { postMaterial } from "../hooks/useMaterialApi";
 
-const OrderForm = ({ onFormSubmit }) => {
+const MaterialOrderForm = () => {
   const {
     register,
     handleSubmit,
@@ -12,8 +13,13 @@ const OrderForm = ({ onFormSubmit }) => {
   const form = useRef(null);
   const onSubmit = (data) => {
     console.log(data);
-    onFormSubmit();
-    form.current.reset();
+    const order = {
+      name: data.name,
+      quantity: data.cantidad,
+      price: data.price,
+      proveedor: data.proveeodr,
+    };
+    postMaterial(order);
   };
 
   const materials = useContext(MaterialsContext);
@@ -89,14 +95,31 @@ const OrderForm = ({ onFormSubmit }) => {
   };
 
   return (
-    <form
-      onSubmit={(event) => {
-        event.preventDefault();
-          handleSubmit(onSubmit);
-      }}
-      ref={form}
-      className={Styles.form}
-    >
+    <form onSubmit={handleSubmit(onSubmit)} ref={form} className={Styles.form}>
+
+      <fieldset className={Styles.fieldset}>
+        <div className={Styles.fieldsetDiv}>
+          <label for="name" className={Styles.label}>
+            Nombre:{" "}
+          </label>
+          <input
+            className={Styles.input + 'pr-4'}
+            id="name"
+            type="string"
+            placeholder="Nombre"
+            {...register("name", {
+              required: "Por favor ingresa un nombre",
+            })}
+          />
+        </div>
+        <ErrorMessage
+          errors={errors}
+          name="name"
+          render={({ message }) => (
+            <p className={Styles.errorMessage}>{message}</p>
+          )}
+        />
+      </fieldset>
       <fieldset className={Styles.fieldset}>
         <div className={Styles.fieldsetDiv}>
           <label for="priceNumber" className={Styles.label}>
@@ -129,13 +152,18 @@ const OrderForm = ({ onFormSubmit }) => {
             Proveedor:{" "}
           </label>
           <select name="materials" id="materials" className={Styles.input}>
-            {materials && materials.map((material) => {
-              return (
-                <option value={material.proveedor} key={material.id}>
-                  {material.proveedor}
-                </option>
-              );
-            })}
+            {materials &&
+              materials.map((material) => {
+                return (
+                  <option 
+                    value={material.proveedor} 
+                    key={material.id}
+                    {...register("proveedor")}
+                  >
+                    {material.proveedor}
+                  </option>
+                );
+              })}
           </select>
         </div>
       </fieldset>
@@ -172,4 +200,4 @@ const OrderForm = ({ onFormSubmit }) => {
   );
 };
 
-export default OrderForm;
+export default MaterialOrderForm;

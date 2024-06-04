@@ -1,5 +1,6 @@
 import NavCards from "../layout/NavCards";
 import Card from "../components/Cards";
+import { MaterialsProvider } from "../context/MaterialsContext";
 import { getAllMaterials } from "../hooks/useMaterialApi";
 
 const CardDisplay = () => {
@@ -24,6 +25,7 @@ const CardDisplay = () => {
   };
 
   return (
+    <MaterialsProvider>
       <NavCards>
         <div id="cardContainer" className={Styles.cardGrid}>
         {materials && materials.map(material => {
@@ -31,6 +33,7 @@ const CardDisplay = () => {
         })}
         </div>
       </NavCards>
+      </MaterialsProvider>
   );
 };
 

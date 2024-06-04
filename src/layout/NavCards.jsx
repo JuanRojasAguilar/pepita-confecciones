@@ -30,6 +30,7 @@ const NavCards = ({ children }) => {
       w-screen
       fixed
       z-10
+      pl-4
     `,
     anterior: `
       sm:text-4xl

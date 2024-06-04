@@ -1,5 +1,4 @@
 const Card = ({material}) => {
-  console.log(material)
   const Styles = {
     cardContainer: `
       flex

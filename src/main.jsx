@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import './index.css'
 
 import CardDisplay from "./pages/CardDisplay.jsx";
-import OrderPlacement from "./pages/OrderPlacement.jsx";
+import MaterialOrderPlacement from "./pages/MaterialOrderPlacement.jsx";
 
 const router = createBrowserRouter([
   {
@@ -17,8 +17,8 @@ const router = createBrowserRouter([
     element: <CardDisplay />
   },
   {
-    path: "/order-placement",
-    element: <OrderPlacement />
+    path: "/material-order-placement",
+    element: <MaterialOrderPlacement />
   }
 ])
 

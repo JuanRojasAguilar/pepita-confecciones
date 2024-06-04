@@ -9,13 +9,17 @@ const postMaterial = (obj) => {
 };
 
 const getAllMaterials = async () => {
-  const req = await fetch(url, {
+  const response = await fetch(url, {
     method: "GET",
     headers: { 'content-type': 'application/json' }
   })
-  const res = await req.json()
 
-  return res;
+  if (!response.ok) {
+    throw new Error("The API response wasn't ok");
+  }
+
+  const data = await response.json()
+  return data;
 };
 
 export { postMaterial, getAllMaterials };

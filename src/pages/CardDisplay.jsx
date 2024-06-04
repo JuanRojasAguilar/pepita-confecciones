@@ -4,16 +4,26 @@ import Card from "../components/Cards";
 const CardDisplay = () => {
   const Styles = {
     cardGrid: `
-      flex
-      flex-wrap
-      gap-y-10
-      justify-around
+      grid
+      grid-cols-1
+      p-2
+      justify-items-center
+      h-full
+      w-full
+      overflow-auto
+      pt-12
+      sm:pt-16
+      landscape:2xl:pt-28
+      gap-y-8
+      sm:grid-cols-2
+      lg:grid-cols-3
+      landscape:2xl:grid-cols-4
     `
   }
 
   return (
     <NavCards>
-      <div className={Styles.cardGrid}>
+      <div id="cardContainer" className={Styles.cardGrid}>
         <Card />
         <Card />
         <Card />

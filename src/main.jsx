@@ -4,8 +4,8 @@ import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import './index.css'
 
-import ReactForm from './components/Form.jsx';
 import CardDisplay from "./pages/CardDisplay.jsx";
+import OrderPlacement from "./pages/OrderPlacement.jsx";
 
 const router = createBrowserRouter([
   {
@@ -14,11 +14,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/materias-primas",
-    element: <ReactForm />
+    element: <CardDisplay />
   },
   {
-    path: "/card-display",
-    element: <CardDisplay />
+    path: "/order-placement",
+    element: <OrderPlacement />
   }
 ])
 

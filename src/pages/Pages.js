@@ -1,11 +1,11 @@
 const Pages = [
   {
-    title: "Pedir Materiales",
+    title: "Materias primas",
     url: "/materias-primas"
   },
   {
-    title: "Ver Materiales",
-    url: "/card-display"
+    title: "Hacer pedido",
+    url: "/order-placement"
   }
 ]
 

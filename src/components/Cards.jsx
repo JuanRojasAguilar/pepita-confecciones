@@ -82,7 +82,7 @@ const Card = ({material}) => {
       <div className={Styles.cardInner}>
         <div className={Styles.cardFront}>
           <h1 className={Styles.title}>{material.name}</h1>
-          <img src={material.image} alt="Image" />
+          <img src={material.image} alt="Image" className="w-1/2" />
           <div className={Styles.downCard}>
             <p>{material.quantity} - {material.proveedor}</p>
           </div>
